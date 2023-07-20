@@ -3,14 +3,14 @@ Title: Density Estimation on Complicated Domains
 Version: 0.0.0.9000
 Authors@R: 
     c(
-    person("Nicolas", "Klutchnikoff", , 
+      person("Nicolas", "Klutchnikoff", , 
           "nicolas.klutchnikoff@unif-rennes2.fr", 
           role = c("aut", "cre"),
           comment = c(ORCID = "0000-0001-9349-0771")),
-    person("Karine", "Bertin", ,
+      person("Karine", "Bertin", ,
           "karine.bertin@uv.cl",
           role = c("aut")),
-    person("Frédéric", "Ouimet", ,
+      person("Frédéric", "Ouimet", ,
           "frederic.ouimet.23@gmail.com",
           role = c("aut"))
     )
