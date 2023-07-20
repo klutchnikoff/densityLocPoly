@@ -1,13 +1,24 @@
 Package: densityLocPoly
-Title: What the Package Does (One Line, Title Case)
+Title: Density Estimation on Complicated Domains
 Version: 0.0.0.9000
 Authors@R: 
+    c(
     person("Nicolas", "Klutchnikoff", , 
           "nicolas.klutchnikoff@unif-rennes2.fr", 
           role = c("aut", "cre"),
-          comment = c(ORCID = "YOUR-ORCID-ID"))
+          comment = c(ORCID = "0000-0001-9349-0771")),
+    person("Karine", "Bertin", ,
+          "karine.bertin@uv.cl",
+          role = c("aut")),
+    person("Frédéric", "Ouimet", ,
+          "frederic.ouimet.23@gmail.com",
+          role = c("aut"))
+    )
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
+Imports: 
+    spatstat,
+    spatstat.geom
