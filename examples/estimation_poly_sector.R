@@ -28,6 +28,7 @@ f1 <- function(x,y) {
 }
 
 f <- f0
+imf <- spatstat.geom::as.im(f, domain)
 data <- spatstat.random::rpoint(1000, f, win = domain)
 
 
@@ -40,10 +41,10 @@ points(data, pch = 20, col = "red")
 points(at, pch = 20, lwd = 10, col = "blue")
 
 ##
-## Computations
+## Computations with our procedure
 ##
 
-bandwidth <- c(x = 0.5, y = 0.5)
+bandwidth <- c(x = 0.25, y = 0.25)
 degree <- 1
 fd <- density_estimation(data, domain, at_points=at, bandwidth=bandwidth, degree=degree)
 
@@ -51,3 +52,21 @@ mean((fd - f(at$x, at$y))**2)
 f(at$x, at$y)
 fd
 
+
+##
+## Computations with sparr
+##
+
+bandwidth <- 0.25
+fdsparr <- sparr::bivariate.density(data, bandwidth, adapt = TRUE)
+plot(fdsparr)
+plot(imf)
+
+fds <- fdsparr$z[1,5]
+
+##
+##
+##
+
+mean((fd - f(at$x, at$y))**2)
+mean((fds - f(at$x, at$y))**2)
