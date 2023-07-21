@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-density_estimation_v2 <- function(
+density_estimation <- function(
     data,
     domain,
     at_points = NULL,
@@ -70,7 +70,7 @@ density_estimation_v2 <- function(
 
     ortho.poly <- orthonormal_polynomials(degree, W = neighborhood)
 
-    datum <- spatstat.geom::subset(data, subset = neighborhood)
+    datum <- spatstat.geom::subset.ppp(data, subset = neighborhood)
     datum <- spatstat.geom::ppp(datum$x, datum$y, window = neighborhood)
     a <- list()
     for (k in seq_along(ortho.poly)) {
