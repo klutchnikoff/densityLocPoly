@@ -7,9 +7,9 @@
 polynomial_sector(k, npoly = 128)
 }
 \arguments{
-\item{k}{Degree}
+\item{k}{Degree of the polynomial sector}
 
-\item{npoly}{number of points (resolution) in the polynomial part}
+\item{npoly}{number of points (resolution) in the polynomial line (boundary)}
 }
 \value{
 An object of class "owin" specifying a window
@@ -19,4 +19,5 @@ Polynomial sector Window
 }
 \examples{
 plot(polynomial_sector(1.8))
+
 }

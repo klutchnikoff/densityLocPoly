@@ -34,6 +34,7 @@ density_estimation_v2 <- function(
   spatstat.geom::verifyclass(at_points, "ppp")
   spatstat.geom::verifyclass(domain, "owin")
   spatstat.geom::verifyclass(degree, "numeric")
+
   if (is.null(bandwidth)) {
     bandwidth <- c(x = (max(at_points$x) - min(at_points$x))/4,
                    y = (max(at_points$y) - min(at_points$y))/4)
@@ -46,10 +47,8 @@ density_estimation_v2 <- function(
   ## ==============================
 
   res <- rep(NA, at_points$n)
-  pb <- txtProgressBar(min = 0, max = at_points$n, style = 3)
 
   for (i in 1:at_points$n) {
-    setTxtProgressBar(pb, i)
 
     ##
     ## current point
@@ -61,9 +60,9 @@ density_estimation_v2 <- function(
     ## neighborhood of (x,y)
     ##
 
-    H <- owin(c(x - bandwidth["x"], x + bandwidth["x"]),
+    H <- spatstat.geom::owin(c(x - bandwidth["x"], x + bandwidth["x"]),
               c(y - bandwidth["y"], y + bandwidth["y"]))
-    neighborhood <- intersect.owin(H, domain)
+    neighborhood <- spatstat.geom::intersect.owin(H, domain)
 
     ##
     ## On commence les calculs
@@ -71,8 +70,8 @@ density_estimation_v2 <- function(
 
     ortho.poly <- orthonormal_polynomials(degree, W = neighborhood)
 
-    datum <- subset(data, subset = neighborhood)
-    datum <- ppp(datum$x, datum$y, window = neighborhood)
+    datum <- spatstat.geom::subset(data, subset = neighborhood)
+    datum <- spatstat.geom::ppp(datum$x, datum$y, window = neighborhood)
     a <- list()
     for (k in seq_along(ortho.poly)) {
       eta_k <- as.function(ortho.poly[[k]])
