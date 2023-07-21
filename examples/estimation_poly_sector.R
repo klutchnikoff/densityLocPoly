@@ -17,7 +17,6 @@ f0 <-  function(x, y) {
   A <- spatstat.geom::integral(spatstat.geom::as.im(g, domain), domain = domain)
   g(x,y)/A
 }
-plot(spatstat.geom::as.im(f0, domain))
 data <- spatstat.random::rpoint(1000, f0, win = domain)
 
 
