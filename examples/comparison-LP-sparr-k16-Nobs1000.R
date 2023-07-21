@@ -8,7 +8,7 @@ eps <- 0.01
 domain <- polynomial_sector(k)
 at <- spatstat.geom::ppp(eps, eps^k/2, domain)
 
-Nobs <- 200
+Nobs <- 1000
 
 ##
 ## densities
@@ -72,10 +72,10 @@ for (rep in 1:Nrep) {
   }
 }
 
-saveRDS(r_lp0, file = "data/rlp0-k1.6-Nobs200.rds")
-saveRDS(r_lp1, file = "data/rlp1-k1.6-Nobs200.rds")
-saveRDS(r_lp2, file = "data/rlp2-k1.6-Nobs200.rds")
-saveRDS(r_sparr, file = "data/rsparr-k1.6-Nobs200.rds")
+saveRDS(r_lp0, file = "data/rlp0-k1.6-Nobs1000.rds")
+saveRDS(r_lp1, file = "data/rlp1-k1.6-Nobs1000.rds")
+saveRDS(r_lp2, file = "data/rlp2-k1.6-Nobs1000.rds")
+saveRDS(r_sparr, file = "data/rsparr-k1.6-Nobs1000.rds")
 
 
 
