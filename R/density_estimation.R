@@ -51,27 +51,26 @@ density_estimation <- function(
   for (i in 1:at_points$n) {
 
     ##
-    ## current point
+    ## current point and its neighborhood
     ##
+
     x <- at_points$x[i]
     y <- at_points$y[i]
 
-    ##
-    ## neighborhood of (x,y)
-    ##
-
-    H <- spatstat.geom::owin(c(x - bandwidth["x"], x + bandwidth["x"]),
-              c(y - bandwidth["y"], y + bandwidth["y"]))
+    H <- spatstat.geom::owin(
+      c(x - bandwidth["x"], x + bandwidth["x"]),
+      c(y - bandwidth["y"], y + bandwidth["y"])
+    )
     neighborhood <- spatstat.geom::intersect.owin(H, domain)
 
     ##
-    ## On commence les calculs
+    ## Computations
     ##
 
     ortho.poly <- orthonormal_polynomials(degree, W = neighborhood)
 
     datum <- spatstat.geom::subset.ppp(data, subset = neighborhood)
-    datum <- spatstat.geom::ppp(datum$x, datum$y, window = neighborhood)
+    #datum <- spatstat.geom::ppp(datum$x, datum$y, window = neighborhood)
     a <- list()
     for (k in seq_along(ortho.poly)) {
       eta_k <- as.function(ortho.poly[[k]])
@@ -82,7 +81,7 @@ density_estimation <- function(
       mapply(a, ortho.poly, FUN = "*", SIMPLIFY = FALSE)
     )
     xy <- nn_im_grid(x, y, ortho.poly[[1]], neighborhood)
-    res[i] <- list(x = x, y = y, z = as.function(loc_poly)(xy[1], xy[2]))
+    res[i] <- as.function(loc_poly)(xy[1], xy[2])
   }
 
   res

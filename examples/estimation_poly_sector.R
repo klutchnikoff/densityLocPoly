@@ -36,7 +36,7 @@ points(M, pch = 20, lwd = 5, col = "green")
 ##
 par(mfrow = c(1,1))
 
-bandwidth <- c(x = 0.1, y = 0.1)
+bandwidth <- c(x = 0.07, y = 0.05)
 degree <- 1
 fd <- density_estimation(data, domain, at_points=at, bandwidth=bandwidth, degree=degree)
 
