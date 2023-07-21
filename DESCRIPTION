@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     c(
       person("Nicolas", "Klutchnikoff", , 
-          "nicolas.klutchnikoff@unif-rennes2.fr", 
+          "nicolas.klutchnikoff@univ-rennes2.fr", 
           role = c("aut", "cre"),
           comment = c(ORCID = "0000-0001-9349-0771")),
       person("Karine", "Bertin", ,
@@ -19,6 +19,5 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
-Imports: 
-    spatstat,
+Imports:
     spatstat.geom
