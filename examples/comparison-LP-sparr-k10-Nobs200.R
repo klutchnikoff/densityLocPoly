@@ -72,10 +72,10 @@ for (rep in 1:Nrep) {
   }
 }
 
-saveRDS(r_lp0, file = "data/rlp0-k1.0-Nobs200.rds")
-saveRDS(r_lp1, file = "data/rlp1-k1.0-Nobs200.rds")
-saveRDS(r_lp2, file = "data/rlp2-k1.0-Nobs200.rds")
-saveRDS(r_sparr, file = "data/rsparr-k1.0-Nobs200.rds")
+saveRDS(r_lp0, file = "data/rlp0-k1-Nobs200.rds")
+saveRDS(r_lp1, file = "data/rlp1-k1-Nobs200.rds")
+saveRDS(r_lp2, file = "data/rlp2-k1-Nobs200.rds")
+saveRDS(r_sparr, file = "data/rsparr-k1-Nobs200.rds")
 
 
 

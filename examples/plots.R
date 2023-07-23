@@ -1,9 +1,9 @@
 library(tidyverse)
 
-lp0 <- readRDS("data/rlp0-k2.1-Nobs200.rds")
-lp1 <- readRDS("data/rlp1-k2.1-Nobs200.rds")
-lp2 <- readRDS("data/rlp2-k2.1-Nobs200.rds")
-sparr <- readRDS("data/rsparr-k2.1-Nobs200.rds")
+lp0 <- readRDS("data/rlp0-k2.1-Nobs2000.rds")
+lp1 <- readRDS("data/rlp1-k2.1-Nobs2000.rds")
+lp2 <- readRDS("data/rlp2-k2.1-Nobs2000.rds")
+sparr <- readRDS("data/rsparr-k2.1-Nobs2000.rds")
 
 find_best <- function(x){
   x |>
@@ -40,8 +40,8 @@ bplot <- bind_rows(
   .id = "Method"
 )
 
-pdf("img/boxplot-k21-Nobs200.pdf", height = 8, width = 8)
+pdf("img/boxplot-k21-Nobs2000.pdf", height = 8, width = 8)
 boxplot(risk ~ Method, data = bplot,
-        main = "k = 1.6 and N = 200")
+        main = "k = 2.1 and N = 2000")
 dev.off()
 

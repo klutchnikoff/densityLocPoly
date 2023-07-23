@@ -1,4 +1,5 @@
 library(tidyverse)
+
 ##
 ## domain
 ##
@@ -62,7 +63,7 @@ for (rep in 1:Nrep) {
 
     ## sparr
     f_sparr <- sparr::bivariate.density(data, h)
-    f_sparr <- f_sparr$z[1,5] # at ??
+    f_sparr <- f_sparr$z[1,10] # at ??
 
     val <- f(at$x, at$y)
     r_lp0 <- bind_rows(r_lp0, tibble(replication = rep, h = h, value = (f_lp0 - val)**2))
