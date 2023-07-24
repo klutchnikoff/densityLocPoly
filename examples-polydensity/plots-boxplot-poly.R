@@ -55,12 +55,27 @@ bplot <- bind_rows(
     SPARR = sparr_opt),
     .id = "Method"
 )
-pdf("img/boxplot-k21.pdf", height = 8, width = 8)
+
+## Dessins
+
+pdf("img/boxplot-k1.pdf", height = 4, width = 8)
+n_names <- as_labeller(
+  c(`200` = "n = 200",
+    `500` = "n = 500",
+    `1000` = "n = 1000",
+    `2000` = "n = 2000"))
 bplot |>
-  filter( k==2.1 ) |>
+  filter(k==1) |>
   ggplot() +
     aes(x = Method, y = risk, fill = Method) +
-    geom_boxplot(position = position_dodge()) +
-    facet_wrap(~n)
+    geom_boxplot(position = position_dodge(), outlier.size = -1, outlier.alpha = 0.5) +
+    scale_y_continuous(limits = c(0, 14)) +
+    xlab("") +
+    facet_wrap(~n, nrow = 1, labeller = n_names) +
+    scale_fill_grey(start = 0.5, end = 0.9) +
+    theme_classic() +
+    theme(legend.position = "none",
+        axis.title.y = element_blank(),
+        axis.line.y = element_blank())
 dev.off()
 

@@ -29,6 +29,8 @@ f2 <-  function(x, y) {
 f <- f2
 imf <- spatstat.geom::as.im(f, domain)
 
+
+
 ##
 ## Bandwidth and degree
 ##
