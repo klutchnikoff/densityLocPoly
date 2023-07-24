@@ -63,9 +63,9 @@ for (rep in 1:Nrep) {
     f_sparr <- f_sparr$z[1,10] # at ??
 
     val <- f(at$x, at$y)
-    r_lp0 <- bind_rows(r_lp0, tibble(replication = rep, h = h, value = (f_lp0 - val)**2))
-    r_lp1 <-  bind_rows(r_lp1, tibble(replication = rep, h = h, value = (f_lp1 - val)**2))
-    r_lp2 <-  bind_rows(r_lp2, tibble(replication = rep, h = h, value = (f_lp2 - val)**2))
+    r_lp0 <- bind_rows(r_lp0, tibble(replication = rep, h = h, value = (f_lp0 - val_lp)**2))
+    r_lp1 <-  bind_rows(r_lp1, tibble(replication = rep, h = h, value = (f_lp1 - val_lp)**2))
+    r_lp2 <-  bind_rows(r_lp2, tibble(replication = rep, h = h, value = (f_lp2 - val_lp)**2))
     r_sparr <-  bind_rows(r_sparr, tibble(replication = rep, h = h, value = (f_sparr - val)**2))
   }
 }
