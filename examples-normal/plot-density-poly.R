@@ -9,14 +9,9 @@ for (k in KK){
   domain <- polynomial_sector(k)
 
   f <-  function(x, y) {
-    a1 <- 1/3
-    b1 <- (1/3)**k/2
-    a2 <- 3/4
-    b2 <- (3/4)**k/2
-    g <- function(u, v) {
-      exp(-((u-a1)**2 + (v-b1)**2)/(2*0.2**2)) +
-      exp(-((u-a2)**2 + (v-b2)**2)/(2*0.15**2))
-    }
+    a <- 0.6
+    b <- 0.2
+    g <- function(u, v) {(u-a)**2 + (v-b)**2}
     A <- spatstat.geom::integral(spatstat.geom::as.im(g, domain), domain = domain)
     g(x,y)/A
   }
@@ -24,9 +19,9 @@ for (k in KK){
 
   imf <- spatstat.geom::as.im(f, domain)
 
-  pdf(file = str_c("img/normal-density-k",k,".pdf"), width = 4, height = 4)
+  pdf(file = str_c("img/poly-density-k",k,".pdf"), width = 4, height = 4)
   plot(imf,
-       col = grey(seq(1, 0.2, length = 256)),
+       col = grey(seq(1, 0, length = 256)),
        main = "", ribbon=FALSE,
        ylab="", yaxt="n",
        xlab="", xaxt="n")
