@@ -14,9 +14,9 @@ library(tidyverse)
 ## Init
 ##
 
-NN <- c(200, 500, 1000) # nb observation points
-RR <- 1:50 # RR = 1:500  # nb of replications
-HH <- seq(0.01, 0.25, by = 0.02) # for bandwidth
+NN <- c(200, 500, 1000, 2000) # nb observation points
+RR <- 1:500 # RR = 1:500  # nb of replications
+HH <- seq(0.01, 0.5, by = 0.02) # for bandwidth
 KK <- c(1, 2.1) # polynomial sector
 
 density_type <-  "f_poly" # "f_norm"
@@ -53,6 +53,7 @@ for (n in NN) {
     ## TODO: parallelize this loop
     ##
     for (r in RR) {
+      cat(r, " - ")
 
       data <- spatstat.random::rpoint(n, f, win = domain)
 
@@ -94,4 +95,4 @@ for (n in NN) {
   }
 }
 
-#write_csv(risk, file = str_c("data/risk.csv"))
+write_csv(risk_poly, file = str_c("data/risk.csv"))
