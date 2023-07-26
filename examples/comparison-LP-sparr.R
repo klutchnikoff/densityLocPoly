@@ -19,7 +19,7 @@ RR <- 1:500 # RR = 1:500  # nb of replications
 HH <- seq(0.01, 0.5, by = 0.02) # for bandwidth
 KK <- c(1, 2.1) # polynomial sector
 
-density_type <-  "f_poly" # "f_norm"
+density_type <-  "f_norm" # "f_poly"
 
 ##
 ## Start
@@ -95,4 +95,4 @@ for (n in NN) {
   }
 }
 
-write_csv(risk_poly, file = str_c("data/risk.csv"))
+write_csv(risk, file = str_c("data/risk_norm.csv"))
