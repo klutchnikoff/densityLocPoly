@@ -5,11 +5,9 @@ library(tidyverse)
 ##
 
 NN <- c(200, 500, 1000, 2000) # nb observation points
-RR <- 1:1 # RR = 1:500  # nb of replications
+RR <- 1:50 # RR = 1:500  # nb of replications
 HH <- seq(0.01, 0.6, by = 0.02) # for bandwidth
-KK <- c(1, 1.6, 2.1) # polynomial sector
-
-f00 <- f(0,0)
+KK <- c(1, 2.1) # polynomial sector
 
 ##
 ## Start
@@ -28,6 +26,7 @@ for (n in NN) {
 
     domain <- polynomial_sector(k)
     f <- function(x, y) {f_poly(x, y , k)}
+    f00 <- f(0,0)
 
     # Strangely (0,0) does not belong to domain for spatstat ! Bug?
     eps <- 0.001
