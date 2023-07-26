@@ -70,7 +70,7 @@ density_estimation <- function(
     ortho.poly <- orthonormal_polynomials(degree, W = neighborhood)
 
     datum <- spatstat.geom::subset.ppp(data, subset = neighborhood)
-    #datum <- spatstat.geom::ppp(datum$x, datum$y, window = neighborhood)
+
     a <- list()
     for (k in seq_along(ortho.poly)) {
       eta_k <- as.function(ortho.poly[[k]])

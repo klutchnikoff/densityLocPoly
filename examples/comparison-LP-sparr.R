@@ -1,3 +1,13 @@
+##
+## This example simulates a small part
+## (for reasons of calculation time) of the simulations
+## available in the following document
+##
+## [2023] K. Bertin, N. Klutchnikoff and F. Ouimet
+## A NEW ADAPTIVE LOCAL POLYNOMIAL DENSITY ESTIMATION PROCEDURE ON COMPLICATED DOMAINS
+## ArXiv:
+##
+
 library(tidyverse)
 
 ##
@@ -8,6 +18,8 @@ NN <- c(200, 500, 1000) # nb observation points
 RR <- 1:50 # RR = 1:500  # nb of replications
 HH <- seq(0.01, 0.25, by = 0.02) # for bandwidth
 KK <- c(1, 2.1) # polynomial sector
+
+density_type <-  "f_poly" # "f_norm"
 
 ##
 ## Start
@@ -22,13 +34,13 @@ risk <- tibble(
   value = numeric())
 
 for (n in NN) {
-  cat("n = ", n)
+  cat("n = ", n, "\n")
 
   for (k in KK) {
-    cat("  |- k = ", k)
+    cat("  |- k = ", k, "\n")
 
     domain <- polynomial_sector(k)
-    f <- function(x, y) {f_poly(x, y , k)}
+    f <- function(x, y) {do.call(density_type, list(x, y , k))}
     f00 <- f(0,0)
 
     # Strangely (0,0) does not belong to domain for spatstat ! Bug?
@@ -82,4 +94,4 @@ for (n in NN) {
   }
 }
 
-write_csv(risk, file = str_c("data/risk.csv"))
+#write_csv(risk, file = str_c("data/risk.csv"))
