@@ -15,15 +15,6 @@ regular_points_in_owin <- function(W, n) {
   spatstat.geom::ppp(x = xy$x[ok], y = xy$y[ok], window = W)
 }
 
-#' Select the points that belong to a window
-#'
-#' @param points The points from which we select as a ppp object
-#' @param W The window as an owin object
-#'
-#' @return The selected points
-#' @export
-#'
-#' @examples
 points_inside_owin <- function(points, W) {
   spatstat.geom::verifyclass(points, "ppp")
   spatstat.geom::verifyclass(W, "owin")

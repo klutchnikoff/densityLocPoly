@@ -20,9 +20,14 @@ density_estimation(
 
 \item{at_points}{The points}
 
+\item{resolution}{Not used}
+
 \item{bandwidth}{The multivariate bandwidth as a named vector \code{c(x=hx, y=hy)}}
 
 \item{degree}{The degree of the local polynomial approximation}
+}
+\value{
+An estimation of the density of the \code{data} (on \code{domain}) computed at \code{at_points}
 }
 \description{
 LocPoly Density estimation on complicated domains

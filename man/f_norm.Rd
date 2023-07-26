@@ -7,7 +7,12 @@
 f_norm(x, y, k)
 }
 \arguments{
-\item{k}{}
+\item{x, y}{we evaluate f(x,y)}
+
+\item{k}{degree of polynomial sector}
+}
+\value{
+f(x,y)
 }
 \description{
 Title

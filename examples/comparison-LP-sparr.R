@@ -1,7 +1,9 @@
 ##
-## This example simulates a small part
-## (for reasons of calculation time) of the simulations
-## available in the following document
+## This example allows to produce the .csv files contained in data/
+## These files were used to asses the quality (quadratic error)
+## of the procedure implemented
+## in the package against the method proposed in the `sparr` package
+## The results were used in the paper:
 ##
 ## [2023] K. Bertin, N. Klutchnikoff and F. Ouimet
 ## A NEW ADAPTIVE LOCAL POLYNOMIAL DENSITY ESTIMATION PROCEDURE ON COMPLICATED DOMAINS
@@ -63,7 +65,7 @@ for (n in NN) {
         f_sparr_tmp <- sparr::bivariate.density(data, h)$z
 
         # Due to a bug in sparr f_sparr_tmp[1,1] is not always defined
-        # Here is a hack to overcome this problem
+        # Here is a hack to overcome this drawback
         if (is.null(idx_k)) {
           l <-  2
           i <- 1

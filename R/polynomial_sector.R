@@ -24,11 +24,10 @@ polynomial_sector <- function(k, npoly = 128){
 
 #' Title
 #'
-#' @param x
-#' @param y
-#' @param k
+#' @param x,y we evaluate f(x,y)
+#' @param k degree of polynomial sector
 #'
-#' @return
+#' @return f(x,y)
 #' @export
 #'
 #' @examples
@@ -48,11 +47,10 @@ f_norm <-  function(x, y, k) {
 
 #' Title
 #'
-#' @param x
-#' @param y
-#' @param k
+#' @param x,y we evaluate f(x,y)
+#' @param k degree of polynomial sector
 #'
-#' @return
+#' @return f(x,y)
 #' @export
 #'
 #' @examples

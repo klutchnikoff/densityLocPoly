@@ -1,13 +1,20 @@
 library(tidyverse)
 
 ##
+## This file was used to generate the boxplots
+## obtained in the paper
+## [2023] K. Bertin, N. Klutchnikoff and F. Ouimet
+## A NEW ADAPTIVE LOCAL POLYNOMIAL DENSITY ESTIMATION PROCEDURE ON COMPLICATED DOMAINS
+## ArXiv:
+##
+
+##
 ## Init
 ##
 
 risk <- read_csv("data/risk_poly.csv")
-k0 <- 2.1
-
-gather_LP <- TRUE
+k0 <- 2.1  # degree of polynomial sector (1 or 2.1 in the .csv files)
+gather_LP <- TRUE # if TRUE we plot the boxplot of LP = min(LP0, LP1)
 
 ##
 ## start
@@ -41,7 +48,7 @@ ylimit <- bplot |>
   summarise(l = quantile(value, 0.75) + 1.59 * IQR(value))
 ylimit <- max(ylimit$l)
 
-pdf(file = "img/boxplot-poly-k21.pdf", height = 5, width = 8)
+#pdf(file = "img/boxplot-poly-k21.pdf", height = 5, width = 8)
 bplot |> ggplot() +
   aes(x = method, y = value, fill = method) +
   geom_boxplot(position = position_dodge(), outlier.shape = NA) +
@@ -55,5 +62,5 @@ bplot |> ggplot() +
     axis.title.y = element_blank(),
     axis.line.y = element_blank()
   )
-dev.off()
+#dev.off()
 

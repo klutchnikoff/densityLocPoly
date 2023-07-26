@@ -3,11 +3,11 @@
 #' @param data The data as a `ppp` object
 #' @param domain A window of class `owin`
 #' @param at_points The points
-#' @param resolution
+#' @param resolution Not used
 #' @param bandwidth The multivariate bandwidth as a named vector `c(x=hx, y=hy)`
 #' @param degree The degree of the local polynomial approximation
 #'
-#' @return
+#' @return An estimation of the density of the `data` (on `domain`) computed at `at_points`
 #' @export
 #'
 #' @examples

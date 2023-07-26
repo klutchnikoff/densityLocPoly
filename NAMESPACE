@@ -3,6 +3,5 @@
 export(density_estimation)
 export(f_norm)
 export(f_poly)
-export(points_inside_owin)
 export(polynomial_sector)
 export(regular_points_in_owin)

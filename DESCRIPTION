@@ -1,6 +1,6 @@
 Package: densityLocPoly
 Title: Density Estimation on Complicated Domains
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     c(
       person("Nicolas", "Klutchnikoff", , 
@@ -9,12 +9,15 @@ Authors@R:
           comment = c(ORCID = "0000-0001-9349-0771")),
       person("Karine", "Bertin", ,
           "karine.bertin@uv.cl",
-          role = c("aut")),
+          role = c("aut"),
+          comment = c(ORCID = "0000-0002-8167-137X")),
       person("Frédéric", "Ouimet", ,
-          "frederic.ouimet.23@gmail.com",
-          role = c("aut"))
+          "frederic.ouimet@umontreal.ca",
+          role = c("aut"),
+          comment = c(ORCID = "0000-0001-7933-5265"))
     )
-Description: What the package does (one paragraph).
+Description: This package is designed to estimate bivariate densities using nonparametric 
+  local polynomial procedures using data that belong to (complicated) domains.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
