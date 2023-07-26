@@ -4,9 +4,9 @@ library(tidyverse)
 ## Init
 ##
 
-NN <- c(200, 500, 1000, 2000) # nb observation points
+NN <- c(200, 500, 1000) # nb observation points
 RR <- 1:50 # RR = 1:500  # nb of replications
-HH <- seq(0.01, 0.6, by = 0.02) # for bandwidth
+HH <- seq(0.01, 0.25, by = 0.02) # for bandwidth
 KK <- c(1, 2.1) # polynomial sector
 
 ##
@@ -22,7 +22,10 @@ risk <- tibble(
   value = numeric())
 
 for (n in NN) {
+  cat("n = ", n)
+
   for (k in KK) {
+    cat("  |- k = ", k)
 
     domain <- polynomial_sector(k)
     f <- function(x, y) {f_poly(x, y , k)}
@@ -79,4 +82,4 @@ for (n in NN) {
   }
 }
 
-saveRDS(risk, file = str_c("data/risk.rds"))
+write_csv(risk, file = str_c("data/risk.csv"))
