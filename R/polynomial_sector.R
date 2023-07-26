@@ -21,3 +21,46 @@ polynomial_sector <- function(k, npoly = 128){
   y <- c(y1, y2, y3)
   spatstat.geom::owin(poly =  list(x = x, y = y))
 }
+
+#' Title
+#'
+#' @param x
+#' @param y
+#' @param k
+#'
+#' @return
+#' @export
+#'
+#' @examples
+f_norm <-  function(x, y, k) {
+  domain <- polynomial_sector(k)
+  a1 <- 1/3
+  b1 <- (1/3)**k/2
+  a2 <- 3/4
+  b2 <- (3/4)**k/2
+  g <- function(u, v) {
+    exp(-((u-a1)**2 + (v-b1)**2)/(2*0.2**2)) +
+      exp(-((u-a2)**2 + (v-b2)**2)/(2*0.15**2))
+  }
+  A <- spatstat.geom::integral(spatstat.geom::as.im(g, domain), domain = domain)
+  g(x,y)/A
+}
+
+#' Title
+#'
+#' @param x
+#' @param y
+#' @param k
+#'
+#' @return
+#' @export
+#'
+#' @examples
+f_poly <-  function(x, y, k) {
+  domain <- polynomial_sector(k)
+  a <- 0.6
+  b <- 0.2
+  g <- function(u, v) {(u-a)**2 + (v-b)**2}
+  A <- spatstat.geom::integral(spatstat.geom::as.im(g, domain), domain = domain)
+  g(x,y)/A
+}

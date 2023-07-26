@@ -1,6 +1,6 @@
 library(tidyverse)
 
-Nobs <- c(200, 500, 1000, 2000)
+NN <- c(200, 500, 1000, 2000)
 KK <- c(1, 1.6, 2.1)
 
 lp_opt <- tibble(k = numeric(), n = numeric(), risk = numeric())
