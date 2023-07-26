@@ -6,7 +6,10 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of densityLocPoly is to …
+This package is designed to estimate bivariate densities using
+nonparametric local polynomial procedures using data that belong to
+(complicated) domains. Examples can be found in the subdirectory
+`examples/` of the package.
 
 ## Installation
 
@@ -16,13 +19,4 @@ You can install the development version of densityLocPoly from
 ``` r
 # install.packages("devtools")
 devtools::install_github("klutchnikoff/densityLocPoly")
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(densityLocPoly)
-## basic example code
 ```
