@@ -9,8 +9,6 @@
 #'
 #' @return An estimation of the density of the `data` (on `domain`) computed at `at_points`
 #' @export
-#'
-#' @examples
 density_estimation <- function(
     data,
     domain,

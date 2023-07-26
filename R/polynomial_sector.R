@@ -29,8 +29,6 @@ polynomial_sector <- function(k, npoly = 128){
 #'
 #' @return f(x,y)
 #' @export
-#'
-#' @examples
 f_norm <-  function(x, y, k) {
   domain <- polynomial_sector(k)
   a1 <- 1/3
@@ -52,8 +50,6 @@ f_norm <-  function(x, y, k) {
 #'
 #' @return f(x,y)
 #' @export
-#'
-#' @examples
 f_poly <-  function(x, y, k) {
   domain <- polynomial_sector(k)
   a <- 0.6

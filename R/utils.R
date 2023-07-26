@@ -5,8 +5,6 @@
 #'
 #' @return The regular grid as an object of type ppp
 #' @export
-#'
-#' @examples
 regular_points_in_owin <- function(W, n) {
   spatstat.geom::verifyclass(W, "owin")
 
