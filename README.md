@@ -20,3 +20,22 @@ You can install the development version of densityLocPoly from
 # install.packages("devtools")
 devtools::install_github("klutchnikoff/densityLocPoly")
 ```
+
+## Examples
+
+## Comparison with `sparr`
+
+``` r
+library("ggplot2")
+
+x <- dlstats::cran_stats(c("latticeDensity", "sparr"))
+
+if (!is.null(x)) {
+  ggplot(x, aes(end, downloads, group = package, color = package)) +
+    geom_line() +
+    geom_point() +
+    scale_y_log10()
+}
+```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
