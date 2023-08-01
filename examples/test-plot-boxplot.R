@@ -3,15 +3,12 @@ library(densityLocPoly)
 library(spatstat)
 library(patchwork)
 
-load(file = "../risk_poly_definitif")
-load(file = "../risk_norm_definitif")
-
 gather_LP <- TRUE # if TRUE we plot the boxplot of LP = min(LP0, LP1)
 ggg <- list()
 
 ii <- 0
 for (k0 in c(1, 2.1)) {
-  for (type in c("P", "N")) {
+  for (type in c("poly", "norm")) {
 
     ii <- ii+1
 
@@ -35,9 +32,6 @@ for (k0 in c(1, 2.1)) {
       find_best_h <- bind_rows(a, b)
     }
 
-    # pour voir la meilleure méthode
-    print(find_best_h)
-
     find_best_h <- find_best_h |> select(n, method, h)
 
     bplot <- semi_join(risk, find_best_h, by = c("method", "h")) |>
@@ -52,12 +46,6 @@ for (k0 in c(1, 2.1)) {
       group_by(n, method) |>
       summarise(l = quantile(value, 0.75) + 1.59 * IQR(value))
     ylimit <- max(ylimit$l)
-
-    if (type == "P"){
-      type <- "polynomial"
-    } else {
-      type <- "Gaussian mixture"
-    }
 
     ggg[[ii]] <-
       ggplot(bplot) +
@@ -77,15 +65,13 @@ for (k0 in c(1, 2.1)) {
           axis.title.y = element_blank(),
           axis.line.y = element_blank()
         )
+    pdf(file = str_glue("boxplot-{type}-k{k0}.pdf"), height = 4, width = 8)
+    print(ggg[[ii]])
+    dev.off()
   }
 }
 
 (ggg[[1]] + ggg[[2]]) / (ggg[[3]] + ggg[[4]])
 
-for (ii in 1:4) {
-  pdf(file = str_glue("boxplot-{ii}.pdf"), height = 5, width = 8)
-  print(ggg[[ii]])
-  dev.off()
-}
 
 
