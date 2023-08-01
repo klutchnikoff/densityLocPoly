@@ -20,3 +20,14 @@ You can install the development version of densityLocPoly from
 # install.packages("devtools")
 devtools::install_github("klutchnikoff/densityLocPoly")
 ```
+
+## Getting started
+
+``` r
+library("densityLocPoly")
+```
+
+## Examples
+
+Examples used in the companion paper ArXiV:XXXXXXXX can be found in the
+subdirectory `examples/`.
