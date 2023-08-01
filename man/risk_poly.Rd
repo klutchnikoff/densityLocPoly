@@ -8,7 +8,7 @@
 \format{
 \subsection{\code{risk_poly}}{
 
-A data frame with 300,000 rows and 6 columns:
+A data frame with 960,000 rows and 6 columns:
 \describe{
 \item{rep}{Replication number}
 \item{method}{Estimation method: sparr, lp0, lp1}
@@ -21,7 +21,7 @@ A data frame with 300,000 rows and 6 columns:
 
 \subsection{\code{risk_norm}}{
 
-A data frame with 300,000 rows and 6 columns.
+A data frame with 960,000 rows and 6 columns.
 Normal densities
 }
 }

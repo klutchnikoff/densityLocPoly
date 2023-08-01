@@ -24,91 +24,10 @@ devtools::install_github("klutchnikoff/densityLocPoly")
 ## Getting started
 
 ``` r
-library("tidyverse")
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-#> ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.8     ✔ dplyr   1.0.9
-#> ✔ tidyr   1.2.0     ✔ stringr 1.5.0
-#> ✔ readr   2.1.2     ✔ forcats 0.5.1
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
 library("densityLocPoly")
 ```
 
 ## Examples
 
-## Comparison with `sparr`
-
-``` r
-x <- dlstats::cran_stats(c("latticeDensity", "sparr"))
-
-if (!is.null(x)) {
-  ggplot(x, aes(end, downloads, group = package, color = package)) +
-    geom_line() +
-    geom_point() +
-    scale_y_log10()
-}
-```
-
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
-
-In the following example, we use the data
-
-``` r
-gather_LP <- TRUE # if TRUE we plot the boxplot of LP = min(LP0, LP1)
-
-for (k0 in c(1, 2.1)) {
-  for (type in c("poly", "norm")) {
-    risk <- get(str_c("risk_", type))
-
-    find_best_h <- risk |>
-      group_by(h, method) |>
-      summarise(mse = mean(value)) |>
-      group_by(method, .drop = TRUE) |>
-      summarise(h = h[which.min(mse)])
-
-    bplot <- semi_join(risk, find_best_h, by = c("method", "h")) |>
-      filter(k == k0) |>
-      select(rep, n, method, value)
-
-    # best LP
-    if (gather_LP) {
-      bplot <- bplot |>
-        pivot_wider(names_from = method, values_from = value) |>
-        (\(.){
-          mutate(., LP = purrr::pmap_dbl(
-            select(., contains("LP")),
-            pmin,
-            na.rm = TRUE
-          ))
-        })() |>
-        select(n, SPARR, LP) |>
-        pivot_longer(-n, names_to = "method")
-    }
-
-    ylimit <- bplot |>
-      group_by(n, method) |>
-      summarise(l = quantile(value, 0.75) + 1.59 * IQR(value))
-    ylimit <- max(ylimit$l)
-
-    print(
-      ggplot(bplot) +
-        aes(x = method, y = value, fill = method) +
-        geom_boxplot(position = position_dodge(), outlier.shape = NA) +
-        coord_cartesian(ylim = c(0, ylimit)) +
-        xlab("") +
-        facet_wrap(~n, nrow = 1) +
-        scale_fill_grey(start = 0.5, end = 0.9) +
-        theme_classic() +
-        theme(
-          legend.position = "none",
-          axis.title.y = element_blank(),
-          axis.line.y = element_blank()
-        )
-    )
-  }
-}
-```
-
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" /><img src="man/figures/README-unnamed-chunk-4-2.png" width="100%" /><img src="man/figures/README-unnamed-chunk-4-3.png" width="100%" /><img src="man/figures/README-unnamed-chunk-4-4.png" width="100%" />
+Examples used in the companion paper ArXiV:XXXXXXXX can be found in the
+subdirectory `examples/`.

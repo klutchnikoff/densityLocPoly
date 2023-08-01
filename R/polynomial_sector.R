@@ -31,12 +31,12 @@ polynomial_sector <- function(k, npoly = 128){
 #' @export
 f_norm <-  function(x, y, k) {
   domain <- polynomial_sector(k)
-  a1 <- 1/3
-  b1 <- (1/3)**k/2
+  a1 <- 1/10
+  b1 <- (1/10)**k/2
   a2 <- 3/4
   b2 <- (3/4)**k/2
   g <- function(u, v) {
-    exp(-((u-a1)**2 + (v-b1)**2)/(2*0.2**2)) +
+    exp(-((u-a1)**2 + (v-b1)**2)/(2*0.4**2)) +
       exp(-((u-a2)**2 + (v-b2)**2)/(2*0.15**2))
   }
   A <- spatstat.geom::integral(spatstat.geom::as.im(g, domain), domain = domain)
@@ -51,10 +51,10 @@ f_norm <-  function(x, y, k) {
 #' @return f(x,y)
 #' @export
 f_poly <-  function(x, y, k) {
-  domain <- polynomial_sector(k)
+  domain <- polynomial_sector(2)
   a <- 0.6
   b <- 0.2
-  g <- function(u, v) {(u-a)**2 + (v-b)**2}
+  g <- function(u, v) {abs(u-a)**2 + abs(v-b)**2}
   A <- spatstat.geom::integral(spatstat.geom::as.im(g, domain), domain = domain)
   g(x,y)/A
 }
@@ -106,7 +106,6 @@ simulate_risk_polysec <- function(NN, RR, HH, KK, density_type) {
       .combine = "bind_rows",
       .packages = c('dplyr', 'densityLocPoly')
     ) %:% foreach(k = KK) %dopar% {
-      set.seed(n*k)
       res_tmp <-
         tibble(
           rep = numeric(),
@@ -158,15 +157,23 @@ simulate_risk_polysec <- function(NN, RR, HH, KK, density_type) {
             }
             idx_k <- c(l - i, i)
           }
-          f_sparr <- as.vector(f_sparr_tmp[idx_k[1], idx_k[2]])
 
+          f_sparr <- as.vector(f_sparr_tmp[idx_k[1], idx_k[2]])
           f_lp0 <- density_estimation(data, domain, at_points = zero, bandwidth = c(x = h, y = h), degree = 0)
           f_lp1 <- density_estimation(data, domain, at_points = zero, bandwidth = c(x = h, y = h), degree = 1)
+          f_lp2 <- density_estimation(data, domain, at_points = zero, bandwidth = c(x = h, y = h), degree = 2)
+          # f_lp3 <- density_estimation(data, domain, at_points = zero, bandwidth = c(x = h, y = h), degree = 3)
+          # f_lp4 <- density_estimation(data, domain, at_points = zero, bandwidth = c(x = h, y = h), degree = 4)
+          # f_lp5 <- density_estimation(data, domain, at_points = zero, bandwidth = c(x = h, y = h), degree = 5)
 
           res_tmp <- bind_rows(
             res_tmp,
             tibble(rep = r, h = h, n = n, k = k, method = "LP0", value = (f_lp0 - f00)**2),
             tibble(rep = r, h = h, n = n, k = k, method = "LP1", value = (f_lp1 - f00)**2),
+            tibble(rep = r, h = h, n = n, k = k, method = "LP2", value = (f_lp2 - f00)**2),
+            # tibble(rep = r, h = h, n = n, k = k, method = "LP3", value = (f_lp3 - f00)**2),
+            # tibble(rep = r, h = h, n = n, k = k, method = "LP4", value = (f_lp4 - f00)**2),
+            # tibble(rep = r, h = h, n = n, k = k, method = "LP5", value = (f_lp5 - f00)**2),
             tibble(rep = r, h = h, n = n, k = k, method = "SPARR", value = (f_sparr - f00)**2)
           )
         }

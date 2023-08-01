@@ -5,7 +5,7 @@
 #' TBC
 #'
 #' @format ## `risk_poly`
-#' A data frame with 300,000 rows and 6 columns:
+#' A data frame with 960,000 rows and 6 columns:
 #' \describe{
 #'   \item{rep}{Replication number}
 #'   \item{method}{Estimation method: sparr, lp0, lp1}
@@ -18,6 +18,6 @@
 
 #' @rdname risk_poly
 #' @format ## `risk_norm`
-#' A data frame with 300,000 rows and 6 columns.
+#' A data frame with 960,000 rows and 6 columns.
 #' Normal densities
 "risk_norm"
