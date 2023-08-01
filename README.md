@@ -29,5 +29,5 @@ library("densityLocPoly")
 
 ## Examples
 
-Examples used in the companion paper ArXiV:XXXXXXXX can be found in the
+Examples used in the companion paper ArXiV:yyXXXXXX can be found in the
 subdirectory `examples/`.
