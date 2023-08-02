@@ -6,11 +6,8 @@ library(patchwork)
 gather_LP <- TRUE # if TRUE we plot the boxplot of LP = min(LP0, LP1)
 ggg <- list()
 
-ii <- 0
 for (k0 in c(1, 2.1)) {
   for (type in c("poly", "norm")) {
-
-    ii <- ii+1
 
     risk <- get(str_glue("risk_{type}")) |>
       filter(method %in% c("SPARR", "LP0", "LP1", "LP2")) |>
@@ -47,7 +44,7 @@ for (k0 in c(1, 2.1)) {
       summarise(l = quantile(value, 0.75) + 1.59 * IQR(value))
     ylimit <- max(ylimit$l)
 
-    ggg[[ii]] <-
+    gg <-
       ggplot(bplot) +
         aes(x = method, y = value, fill = method) +
         geom_boxplot(
@@ -65,13 +62,14 @@ for (k0 in c(1, 2.1)) {
           axis.title.y = element_blank(),
           axis.line.y = element_blank()
         )
+    ggg[[length(ggg) + 1]] <- gg
     pdf(file = str_glue("boxplot-{type}-k{k0}.pdf"), height = 4, width = 8)
-    print(ggg[[ii]])
+    print(gg)
     dev.off()
   }
 }
 
-(ggg[[1]] + ggg[[2]]) / (ggg[[3]] + ggg[[4]])
+((ggg[[1]] + ggg[[2]]) / (ggg[[3]] + ggg[[4]]))
 
 
 

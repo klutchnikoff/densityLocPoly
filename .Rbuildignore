@@ -3,7 +3,5 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^examples$
-^data$
-^img$
 ^doc$
 ^Meta$

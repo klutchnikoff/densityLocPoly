@@ -33,7 +33,11 @@ Imports:
 Depends: 
     R (>= 2.10)
 LazyData: true
+LazyDataCompression: bzip2
 Suggests: 
+    patchwork,
+    spatstat,
+    tidyverse,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
