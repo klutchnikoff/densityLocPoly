@@ -30,5 +30,9 @@ library("densityLocPoly")
 
 ## Examples
 
-Examples used in the companion paper ArXiV:yyXXXXXX can be found in the
-subdirectory `examples/`.
+Examples used in the companion paper ArXiV:yyXXXXXX are accessible as
+follows:
+
+``` r
+vignette("example-sector", package = "densityLocPoly")
+```
