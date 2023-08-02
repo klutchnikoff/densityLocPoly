@@ -18,7 +18,8 @@ You can install the development version of densityLocPoly from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("klutchnikoff/densityLocPoly")
+# devtools::install_github("klutchnikoff/densityLocPoly")
+devtools::install_github("klutchnikoff/densityLocPoly", build_vignettes = TRUE)
 ```
 
 ## Getting started
