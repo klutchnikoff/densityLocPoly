@@ -27,7 +27,7 @@ library(patchwork)
 
 ## Example densities
 
-In the paper [1], four densities are used, two for each domain $\mathcal{D}_1$ and $\mathcal{D}_{2.1}$. Here, we represent these densities.
+In [this paper](https://arxiv.org/abs/2308.01156), four densities are used, two for each domain $\mathcal{D}_1$ and $\mathcal{D}_{2.1}$. Here, we represent these densities.
 
 ```{r}
 K <- c(1, 2.1)

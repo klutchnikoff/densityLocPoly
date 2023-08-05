@@ -7,9 +7,13 @@
 <!-- badges: end -->
 
 This package is designed to estimate bivariate densities using
-nonparametric local polynomial procedures using data that belong to
-(complicated) domains. Examples can be found in the subdirectory
-`examples/` of the package.
+nonparametric local polynomial procedures for data that belong to
+(complicated) domains in $R^2$. Examples can be found in the
+subdirectory `examples/` of the package.
+
+This package has been created to illustrate the properties of the
+estimation procedure proposed in [this
+paper](https://arxiv.org/abs/2308.01156).
 
 ## Installation
 
@@ -30,7 +34,8 @@ library("densityLocPoly")
 
 ## Examples
 
-Examples used in the companion paper ArXiV:yyXXXXXX are accessible as
+Examples used in the companion paper
+[arXiv:2308.01156](https://arxiv.org/abs/2308.01156) are accessible as
 follows:
 
 ``` r
