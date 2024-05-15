@@ -34,9 +34,5 @@ library("densityLocPoly")
 ## Examples
 
 Examples used in the companion paper
-[arXiv:2308.01156](https://arxiv.org/abs/2308.01156) are accessible as
-follows:
-
-``` r
-vignette("example-sector", package = "densityLocPoly")
-```
+[arXiv:2308.01156](https://arxiv.org/abs/2308.01156) are accessible
+[here](https://github.com/klutchnikoff/complicated_domains/tree/main)
