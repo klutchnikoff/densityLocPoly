@@ -8,8 +8,7 @@
 
 This package is designed to estimate bivariate densities using
 nonparametric local polynomial procedures for data that belong to
-(complicated) domains in $R^2$. Examples can be found in the
-subdirectory `examples/` of the package.
+(complicated) domains in $R^2$.
 
 This package has been created to illustrate the properties of the
 estimation procedure proposed in [this
